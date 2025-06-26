@@ -58,13 +58,14 @@ for cid in np.unique(k_labels):
     indices = np.where(k_labels == cid)[0]
     centroid = np.mean(X[indices], axis=0)
     st.write(f"Centroid for Cluster {cid}:")
-    st.code(centroid[:10])  # show first 10 values for demo
+    st.code(centroid[:10])  # first 10 values only
 
 # 🔎 Similarity search
 st.subheader("🔍 Voice Similarity Search")
 uploaded = st.file_uploader("Upload a .wav file to find similar voices", type=["wav"])
 
 if uploaded:
+    # Pick correct model
     sys.path.append(os.path.join(os.path.dirname(__file__), "embeddings"))
     if model == "wav2vec2":
         from w2v2 import Wav2Vec2Extractor as Extractor
@@ -76,12 +77,14 @@ if uploaded:
         st.error("Unsupported model.")
         st.stop()
 
+    # Save uploaded file and extract
     with open("temp_input.wav", "wb") as f:
         f.write(uploaded.read())
     extractor = Extractor()
     emb = extractor.extract("temp_input.wav").reshape(1, -1)
     os.remove("temp_input.wav")
 
+    # Compute similarity
     sims = cosine_similarity(emb, X)[0]
     top_idx = np.argsort(sims)[::-1][:3]
 
