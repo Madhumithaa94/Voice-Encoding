@@ -1,39 +1,50 @@
 # 🎙️ Voice-Encoding
 
-This project is part of the **StreamLingo VoiceSync** initiative and focuses on extracting speaker-specific voice embeddings from audio files using pretrained models. It enables clustering and visualization of voice characteristics to support real-time voice preservation and translation systems.
+This project is part of the **StreamLingo VoiceSync** initiative. It focuses on extracting, visualizing, clustering, and tagging speaker embeddings using audio files and pretrained models like **wav2vec2**, **OpenL3**, and **VGGish**.
 
 ---
 
-## 📌 Project Objective
+## 📌 Objective
 
-To extract speaker embeddings using pretrained models, apply dimensionality reduction (UMAP), and visualize the results through clustering algorithms. This helps identify speaker-specific patterns in audio data.
+To analyze and compare speaker characteristics using voice embeddings and enable real-time features such as clustering, voice similarity search, and tagging support.
 
 ---
 
 ## 🧠 Models Used
 
-| Model     | Embedding Dim | Source       |
+| Model     | Dimensionality | Source       |
 |-----------|----------------|--------------|
 | wav2vec2  | 768            | Facebook AI  |
 | OpenL3    | 512            | MIT CSAIL    |
 | VGGish    | 128            | Google       |
 
-These models convert raw audio into fixed-length embeddings that capture tone, timbre, and speaker identity.
+---
+
+## 🚀 Features Implemented
+
+- ✅ Load and compare voice embeddings from `.npy` files  
+- ✅ UMAP projection for dimensionality reduction  
+- ✅ KMeans and HDBSCAN clustering  
+- ✅ Cluster centroid generation  
+- ✅ Voice similarity search using cosine similarity  
+- ✅ Streamlit-based UI to explore embeddings  
+- ✅ Audio tagging and metadata editor  
+- ✅ (Experimental) Auto-tagging for:
+  - Gender classification
+  - Emotion classification (WIP)
 
 ---
 
-## 🛠️ Features Implemented
+## 🖼 Sample Outputs
 
-- ✅ Load embeddings from `.npy` files for selected model
-- ✅ Apply UMAP for 2D projection
-- ✅ Perform clustering using:
-  - KMeans (k=2)
-  - HDBSCAN (density-based)
-- ✅ Visualize clusters using matplotlib (scatter plots)
-- ✅ Interactive selection of embedding model via Streamlit
-- ✅ Display mapping of audio file to cluster assignment
+- UMAP Projections  
+- Cluster visualizations (KMeans, HDBSCAN)  
+- Table mapping each audio to cluster  
+- Centroid audio preview (prototype)  
+- Similar voice results  
+- Editable metadata tags
 
 ---
 
-## 📂 Folder Structure
+## 🧭 Folder Structure
 
